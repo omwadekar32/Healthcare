@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Healthcare Appointment System</title>
+
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <!-- Heroicons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    
+    <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2025/08/24/15/20250824150302-R97I2OBW.js" defer></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+
+    <style>
+        /* Chatbot iframe styles */
+        #chatbot-container {
+            display: none;
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            overflow: hidden;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-blue-600 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+            <h1 class="text-2xl font-bold flex items-center gap-2">
+                <i class="fa-solid fa-heart-pulse"></i> HealthCare+
+            </h1>
+            <nav class="space-x-4">
+                <a href="#services" class="hover:text-yellow-300">Services</a>
+                <a href="#providers" class="hover:text-yellow-300">Providers</a>
+                <a href="#contact" class="hover:text-yellow-300">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-teal-500 text-white py-20 text-center animate__animated animate__fadeIn">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-4xl font-extrabold mb-4">Book Your Appointment in Minutes</h2>
+            <p class="text-lg mb-6">Access top doctors, schedule appointments effortlessly, and get 24/7 AI chatbot assistance for faster booking.</p>
+            <button class="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-full text-lg font-semibold shadow-lg transition transform hover:scale-105">
+                Book Now
+            </button>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-16 max-w-7xl mx-auto px-4">
+        <h3 class="text-3xl font-bold text-center mb-12">Our Services</h3>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div onclick="window.location.href ='/checkup.html'" class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition animate__animated animate__fadeInUp">
+                <i class="fa-solid fa-stethoscope text-blue-600 text-4xl mb-4"></i>
+                <h4 class="text-xl font-semibold mb-2">General Checkups</h4>
+                <p>Routine health assessments to maintain your well-being, with instant booking availability.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition animate__animated animate__fadeInUp">
+                <i class="fa-solid fa-user-doctor text-teal-500 text-4xl mb-4"></i>
+                <h4 class="text-xl font-semibold mb-2">Specialist Consultations</h4>
+                <p>Access specialists in cardiology, orthopedics, dermatology, and more with verified credentials.</p>
+            </div>
+            <div onclick="toggleChatbot()" class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition animate__animated animate__fadeInUp">
+                <i class="fa-solid fa-robot text-yellow-500 text-4xl mb-4"></i>
+                <h4 class="text-xl font-semibold mb-2">24/7 AI Chatbot</h4>
+                <p>Book, reschedule, or cancel appointments anytime via our secure AI-powered chatbot.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Providers -->
+    <section id="providers" class="bg-gray-100 py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center mb-12">Our Healthcare Providers</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-24 h-24 rounded-full mx-auto mb-4" alt="Doctor">
+                    <h4 class="font-semibold text-lg">Dr. John Smith</h4>
+                    <p class="text-gray-500">Cardiologist</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-24 h-24 rounded-full mx-auto mb-4" alt="Doctor">
+                    <h4 class="font-semibold text-lg">Dr. Emily Davis</h4>
+                    <p class="text-gray-500">Dermatologist</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <img src="https://randomuser.me/api/portraits/men/65.jpg" class="w-24 h-24 rounded-full mx-auto mb-4" alt="Doctor">
+                    <h4 class="font-semibold text-lg">Dr. Raj Patel</h4>
+                    <p class="text-gray-500">Orthopedic Surgeon</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-16 max-w-7xl mx-auto px-4">
+        <h3 class="text-3xl font-bold text-center mb-12">Contact Us</h3>
+        <div class="text-center space-y-4">
+            <p><i class="fa-solid fa-envelope text-blue-600"></i> contact@medicareplus.com</p>
+            <p><i class="fa-solid fa-phone text-teal-500"></i> +1-234-567-890</p>
+            <p><i class="fa-solid fa-location-dot text-yellow-500"></i> 123 Health St, Wellness City</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 text-white text-center py-4">
+        <p>© 2025 MediCare+. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Floating Chatbot Button -->
+    <button onclick="toggleChatbot()" 
+        class="fixed bottom-5 right-5 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg transition transform hover:scale-110 z-50">
+        <i class="fa-solid fa-comment-dots text-2xl"></i>
+    </button>
+
+    <!-- Chatbot Container -->
+    <div id="chatbot-container">
+        <!-- Rasa/Dialogflow iframe -->
+        <iframe src="https://your-chatbot-endpoint.com" width="100%" height="100%" frameborder="0"></iframe>
+    </div>
+
+    <script>
+        
+        
+
+        function toggleChatbot() {
+            const bot = document.getElementById('chatbot-container');
+            bot.style.display = bot.style.display === 'none' ? 'block' : 'none';
+        }
+        feather.replace();
+    </script>
+</body>
+</html>
